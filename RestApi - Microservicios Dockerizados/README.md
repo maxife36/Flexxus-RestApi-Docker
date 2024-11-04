@@ -34,23 +34,9 @@ Con el terminal en la carpeta raíz (``RestApi``), ejecuta el siguiente comando 
    ```
 Este comando generará un contenedor que entrará en servicio y se expondrá en el puerto local especificado en el archivo .env.
 
-## 4. Despliegue de los Microservicios
-Una vez que el contenedor de MySQL esté levantado y funcionando correctamente, procede con el despliegue de los microservicios. Ejecuta en la terminal:
-
-  ```bash
-   npm start
-   ```
-Este script levantará uno a uno todos los microservicios, exponiéndolos en los puertos correspondientes.
-
-Una vez finalizado el proceso, verifica en la terminal que los servicios estén levantados en los puertos especificados.
-
 ## Conclusión
 
-Una vez que todos los microservicios estén en funcionamiento, la aplicación estará lista para ser utilizada. Asegúrate de que todos los servicios estén activos y que puedas realizar las solicitudes a la API según sea necesario.
-
-Si encuentras algún problema durante el proceso de inicialización, verifica los registros en la terminal para solucionar cualquier error que pueda surgir.
-
-### ¡La API está lista para usrarse!
+Una vez que todos los microservicios estén en funcionamiento, la aplicación estará lista para ser utilizada. 
 
 # Descripción de la API
 
