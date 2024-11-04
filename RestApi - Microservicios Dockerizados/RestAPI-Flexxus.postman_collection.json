@@ -1,0 +1,716 @@
+{
+	"info": {
+		"_postman_id": "ea909d21-ff01-4678-ac5b-8a4e6ee5b00b",
+		"name": "RestAPI-Flexxus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32668882"
+	},
+	"item": [
+		{
+			"name": "Articles",
+			"item": [
+				{
+					"name": "Todos los Articulos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/article/api/articles?page=1&limit=50",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"article",
+								"api",
+								"articles"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "OPCIONAL -> Default = 1"
+								},
+								{
+									"key": "limit",
+									"value": "50",
+									"description": "OPCIONAL -> Default = 50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Articulo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"name\": \"Celular\", \r\n    \"brand\": \"Samsung\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/article/api/articles",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"article",
+								"api",
+								"articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Articulo",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Microondas\", \"brand\": \"Samsung\" , \"active\" : 0}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/article/api/articles/{{articleId}}",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"article",
+								"api",
+								"articles",
+								"{{articleId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Articulos Filtrados",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"flexxusAgent\",\r\n    \"password\":\"contraseñaSegura\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/article/api/articles/filter?page=1&limit=50&name=venti",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"article",
+								"api",
+								"articles",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "OPCIONAL -> Default = 1"
+								},
+								{
+									"key": "limit",
+									"value": "50",
+									"description": "OPCIONAL -> Default = 50"
+								},
+								{
+									"key": "name",
+									"value": "venti",
+									"description": "OPCIONAL (string)"
+								},
+								{
+									"key": "brand",
+									"value": "",
+									"description": "OPCIONAL (string)",
+									"disabled": true
+								},
+								{
+									"key": "active",
+									"value": "",
+									"description": "OPCIONAL( 0 - 1 )",
+									"disabled": true
+								},
+								{
+									"key": "exact",
+									"value": "",
+									"description": "OPCIONAL(boolean) -> Default = false",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Articulo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/article/api/articles/{{articleId}}",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"article",
+								"api",
+								"articles",
+								"{{articleId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Articulos por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"flexxusAgent\",\r\n    \"password\":\"contraseñaSegura\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/article/api/articles/{{articleId}}",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"article",
+								"api",
+								"articles",
+								"{{articleId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Registro de Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"flexxusAgent\",\r\n    \"password\":\"contraseñaSegura\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/account/api/register",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"account",
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login de Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"flexxusAgent\",\r\n    \"password\":\"contraseñaSegura\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/account/api/login",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"account",
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Prueba de API",
+			"item": [
+				{
+					"name": "Registro de Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"flexxusAgent\",\r\n    \"password\":\"contraseñaSegura\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/account/api/register",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"account",
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login de Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"flexxusAgent\",\r\n    \"password\":\"contraseñaSegura\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/account/api/login",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"account",
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Articulo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let currentIndex = parseInt(pm.globals.get(\"currentIndex\"), 10);\r",
+									"if (currentIndex === 1) { // Porque se incrementa después de la primera solicitud\r",
+									"    pm.globals.set(\"articleId\", pm.response.json().data.id);\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const items = [\r",
+									"    { \"name\": \"Celular\", \"brand\": \"Samsung\" },\r",
+									"    { \"name\": \"Tablet\", \"brand\": \"Apple\" },\r",
+									"    { \"name\": \"Laptop\", \"brand\": \"Dell\" },\r",
+									"    { \"name\": \"Cámara\", \"brand\": \"Nikon\" },\r",
+									"    { \"name\": \"Televisor\", \"brand\": \"LG\" },\r",
+									"    { \"name\": \"Refrigerador\", \"brand\": \"Whirlpool\" },\r",
+									"    { \"name\": \"Aspiradora\", \"brand\": \"Dyson\" },\r",
+									"    { \"name\": \"Parlante\", \"brand\": \"Sony\" },\r",
+									"    { \"name\": \"Microondas\", \"brand\": \"Panasonic\" },\r",
+									"    { \"name\": \"Impresora\", \"brand\": \"HP\" },\r",
+									"    { \"name\": \"Router\", \"brand\": \"TP-Link\" },\r",
+									"    { \"name\": \"Monitor\", \"brand\": \"Acer\" },\r",
+									"    { \"name\": \"Consola\", \"brand\": \"Microsoft\" },\r",
+									"    { \"name\": \"Smartwatch\", \"brand\": \"Garmin\" },\r",
+									"    { \"name\": \"Licuadora\", \"brand\": \"Oster\" },\r",
+									"    { \"name\": \"Cafetera\", \"brand\": \"Nespresso\" },\r",
+									"    { \"name\": \"Auriculares\", \"brand\": \"JBL\" },\r",
+									"    { \"name\": \"Ventilador\", \"brand\": \"Atma\" },\r",
+									"    { \"name\": \"Heladera\", \"brand\": \"Mabe\" },\r",
+									"    { \"name\": \"Lavarropas\", \"brand\": \"Electrolux\" }\r",
+									"];\r",
+									"\r",
+									"// Obtener el índice actual\r",
+									"let currentIndex = pm.globals.get(\"currentIndex\") || 0;\r",
+									"currentIndex = parseInt(currentIndex, 10);\r",
+									"\r",
+									"// Verificar si el índice es válido\r",
+									"if (currentIndex < items.length-1) {\r",
+									"    const currentItem = items[currentIndex];\r",
+									"\r",
+									"    // Guardar el objeto actual en una variable local\r",
+									"    pm.variables.set(\"currentItem\", JSON.stringify(currentItem));\r",
+									"\r",
+									"    // Incrementar el índice para la siguiente ejecución\r",
+									"    pm.globals.set(\"currentIndex\", currentIndex + 1);\r",
+									"\r",
+									"    // Ejecutar nuevamente la misma solicitud\r",
+									"    pm.execution.setNextRequest(pm.info.requestName);\r",
+									"} else {\r",
+									"    pm.globals.unset(\"currentIndex\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{currentItem}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/article/api/articles",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"article",
+								"api",
+								"articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Todos los Articulos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/article/api/articles?page=1&limit=50",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"article",
+								"api",
+								"articles"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "OPCIONAL -> Default = 1"
+								},
+								{
+									"key": "limit",
+									"value": "50",
+									"description": "OPCIONAL -> Default = 50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Articulos por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"flexxusAgent\",\r\n    \"password\":\"contraseñaSegura\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/article/api/articles/{{articleId}}",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"article",
+								"api",
+								"articles",
+								"{{articleId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Articulos Filtrados",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"flexxusAgent\",\r\n    \"password\":\"contraseñaSegura\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/article/api/articles/filter?page=1&limit=50&name=Samsu",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"article",
+								"api",
+								"articles",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "OPCIONAL -> Default = 1"
+								},
+								{
+									"key": "limit",
+									"value": "50",
+									"description": "OPCIONAL -> Default = 50"
+								},
+								{
+									"key": "name",
+									"value": "Samsu",
+									"description": "OPCIONAL (string)"
+								},
+								{
+									"key": "brand",
+									"value": "",
+									"description": "OPCIONAL (string)",
+									"disabled": true
+								},
+								{
+									"key": "active",
+									"value": "",
+									"description": "OPCIONAL( 0 - 1 )",
+									"disabled": true
+								},
+								{
+									"key": "exact",
+									"value": "",
+									"description": "OPCIONAL(boolean) -> Default = false",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Articulo",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Microondas\", \"brand\": \"Samsung\" , \"active\" : 0}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/article/api/articles/{{articleId}}",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"article",
+								"api",
+								"articles",
+								"{{articleId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Articulo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{GATEWAY_HOST}}{{GATEWAY_PORT}}/article/api/articles/{{articleId}}",
+							"host": [
+								"{{GATEWAY_HOST}}{{GATEWAY_PORT}}"
+							],
+							"path": [
+								"article",
+								"api",
+								"articles",
+								"{{articleId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "GATEWAY_HOST",
+			"value": "http://localhost:",
+			"type": "default"
+		},
+		{
+			"key": "GATEWAY_PORT",
+			"value": "3000",
+			"type": "string"
+		}
+	]
+}

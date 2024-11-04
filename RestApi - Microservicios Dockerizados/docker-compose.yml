@@ -1,0 +1,90 @@
+services:
+  article:
+    build: 
+      context: .
+      dockerfile: ./articles/Dockerfile
+    env_file:
+      - ./.env
+    depends_on:
+      - database
+    environment:
+      - SERVICE_PORT=${ARTICLE_CONTAINER_PORT:-3000}
+    ports:
+      - "${ARTICLE_CONTAINER_PORT:-3000}"
+    networks:
+      - flexxus
+
+  gateway:
+    build: 
+      context: .
+      dockerfile: ./gateway/Dockerfile
+    env_file:
+      - ./.env
+    depends_on:
+      - article
+      - account
+    environment:
+      - SERVICE_PORT=${GATEWAY_CONTAINER_PORT:-3000}
+    ports:
+      - "${GATEWAY_HOST_PORT:-3000}:${GATEWAY_CONTAINER_PORT:-3000}"
+    networks:
+      - flexxus
+    
+  database:
+    build:
+      context: .
+      dockerfile: ./database/Dockerfile
+    env_file:
+      - ./.env
+    environment:
+      - SERVICE_PORT=${DATABASE_CONTAINER_PORT:-3001}
+    ports:
+      - "${DATABASE_CONTAINER_PORT:-3001}"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - flexxus
+
+  account:
+    build: 
+      context: .
+      dockerfile: ./account/Dockerfile
+    platform: linux/amd64
+    env_file:
+      - ./.env
+    depends_on:
+      - database
+    environment:
+      - SERVICE_PORT=${ACCOUNT_CONTAINER_PORT:-3002}
+    ports:
+      - "${ACCOUNT_CONTAINER_PORT:-3002}"
+    networks:
+      - flexxus
+
+  mysql:
+    image: mysql:8
+    restart: always
+    env_file:
+      - ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    ports:
+      - "${MYSQL_CONTAINER_PORT:-3306}"
+    networks:
+      - flexxus
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:  
+      test: ["CMD", "mysqladmin", "ping", "-h", "mysql", "-P", "${MYSQL_CONTAINER_PORT:-3306}", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mysql_data:
+
+networks:
+  flexxus:
+    driver: bridge
